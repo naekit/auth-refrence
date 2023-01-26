@@ -42,6 +42,9 @@ export async function authAction({ request }) {
 
 	// Store token in localStorage
 	localStorage.setItem("token", token)
+	const expiration = new Date()
+	expiration.setHours(expiration.getHours() + 1)
+	localStorage.setItem("expiration", expiration.toISOString())
 
 	// return token
 	return redirect("/")
